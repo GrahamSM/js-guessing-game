@@ -3,6 +3,17 @@
   width: 60%;
   border: 1px solid black;
   padding: 10px;
+  min-height:350px;
+}
+
+.form-holder{
+  margin:1px;
+  float:left;
+}
+
+.instructions{
+  margin:1px;
+  float:right;
 }
 
 .results-container{

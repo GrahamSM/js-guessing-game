@@ -51,7 +51,7 @@ function checkDiff(compNum, playerNum){
 function getOutcome(diff, bet, bankroll){
   $('#results').append('<h4>Results from this round</h4>');
   if (diff===0){
-    bankroll += bet;
+    bankroll += +bet;
     var message = "Correct! You win this round.";
     $('#results').append(message);
   }
@@ -132,13 +132,14 @@ function runGame(bankroll){
   $(".guess-bet-form").on('submit', function(event) {
     if (bankroll > 0){
       event.preventDefault();
-      getBeginStatus(bankroll);
       playerNum = $("#guess").val();
       playerBet = $("#bet").val();
       if (checkBet(playerBet) && checkGuess(playerNum)){
+        getBeginStatus(bankroll);
         var compNum = getRandom();
         var diff = checkDiff(compNum, playerNum);
         bankroll = getOutcome(diff, playerBet, bankroll);
+        document.getElementById('current-score').innerHTML = "<h4>Current score: " + bankroll + "</h4>"
         getRoundStats(playerNum, compNum);
         getFinalStatus(bankroll);
         $('#results').append("<hr>")
