@@ -1,8 +1,23 @@
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="betting_game.js"></script>
   </head>
   <body>
-    <p>All the action is in the console!</p>
+    <div class="form-container">
+      <h2 id = "welcome-title">Welcome to the guessing game</h2>
+      <form class="guess-bet-form">
+          Your guess:<br>
+          <input id="guess" type="text" name="guess"><br>
+          Your bet:<br>
+          <input id="bet" type="text" name="bet"><br>
+          <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="results-container">
+      <ul id="results">
+      </ul>
+    </div>
   </body>
 </html>
