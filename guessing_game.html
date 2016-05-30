@@ -1,8 +1,36 @@
 <html>
   <head>
-    <script src="betting_game.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   </head>
   <body>
-    <p>All the action is in the console!</p>
+    <div class="form-container">
+      <h2 id = "welcome-title">Welcome to the guessing game</h2>
+      <h2 id="current-score"></h2>
+      <div class="form-holder">
+        <form class="guess-bet-form">
+            Your guess:<br>
+            <input id="guess" type="text" name="guess"><br>
+            Your bet:<br>
+            <input id="bet" type="text" name="bet"><br>
+            <input type="submit" value="Submit">
+        </form>
+        <button class="button">Exit</button>
+      </div>
+      <div class="instructions">
+        <h2>How to Play</h2>
+        <p><strong>Input</strong> a number between 1 and 10 as your guess, and a bet value between $5 and $10</p>
+        <p>Your guess will be compared to a randomly generated number</p>
+        <p> If you guess the right number, your total earnings will increase by the value of your bet</p>
+        <p>If you guess the wrong number, your earnings decrease by the value of your bet</p>
+        <p>HOWEVER, your guess is within 1 of the actual number, nothing happens</p>
+        <p>You can play as many times as you like until you wish to exit, or you run out of money</p>
+      </div>
+    </div>
+    <div class="results-container">
+      <ul id="results">
+      </ul>
+    </div>
+    <script src="betting_game.js"></script>
   </body>
 </html>
