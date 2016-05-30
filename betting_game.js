@@ -10,7 +10,8 @@ function getBet(){
 //Helper function to getBet() to verify that user input is between 5 and 10
 function checkBet(bet){
   if ((bet < 5) || (bet > 10)){
-    alert("Your bet must be between $5 and $10. Try again.")
+    $('#results').append("Your bet must be between $5 and $10. Try again.");
+    $('#results').append("<hr>")
     return false;
   }else {
     return true;
@@ -28,7 +29,8 @@ function getGuess(){
 //Helper function to getGuess to verify that a user input is between 1 and 10
 function checkGuess(guess){
   if ((guess < 1) || (guess > 10)){
-    alert("Your guess must be between 1 and 10. Try again.")
+    $('#results').append("Your guess must be between 1 and 10. Try again.")
+    $('#results').append("<hr>")
     return false;
   }else {
     return true;
@@ -133,23 +135,23 @@ function runGame(bankroll){
       getBeginStatus(bankroll);
       playerNum = $("#guess").val();
       playerBet = $("#bet").val();
-      var compNum = getRandom();
-      var diff = checkDiff(compNum, playerNum);
-      bankroll = getOutcome(diff, playerBet, bankroll);
-      getRoundStats(playerNum, compNum);
-      getFinalStatus(bankroll);
-      setTimeout(function(){
-        var continuePlaying = getContinuePlaying();
-        if (!continuePlaying){
-          $('#results').empty();
-          $('#results').append("<h2>Thank you for playing!</h2>");
-          setTimeout(function(){
-            $('#results').empty();
-          }, 1000);
-          bankroll = 100;
-        }
-      }, 1000);
+      if (checkBet(playerBet) && checkGuess(playerNum)){
+        var compNum = getRandom();
+        var diff = checkDiff(compNum, playerNum);
+        bankroll = getOutcome(diff, playerBet, bankroll);
+        getRoundStats(playerNum, compNum);
+        getFinalStatus(bankroll);
+        $('#results').append("<hr>")
+      }
     }
+  });
+  $('.button').on('click', function(event){
+    $('#results').empty();
+    $('#results').append("<h2>Thank you for playing!</h2>");
+    setTimeout(function(){
+      $('#results').empty();
+    }, 1000);
+    bankroll = 100;
   });
 }
 
