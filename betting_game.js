@@ -122,6 +122,10 @@ function getFinalStatus(bankroll){
   $('#results').append("<p>Your ending bankroll is: " + bankroll + "</p>");
 }
 
+function resetGame(){
+
+}
+
 function runGame(bankroll){
   $(".guess-bet-form").on('submit', function(event) {
     if (bankroll > 0){
@@ -138,7 +142,11 @@ function runGame(bankroll){
         var continuePlaying = getContinuePlaying();
         if (!continuePlaying){
           $('#results').empty();
-          $('#results').append("<h2>Thank you for playing!</h2>")
+          $('#results').append("<h2>Thank you for playing!</h2>");
+          setTimeout(function(){
+            $('#results').empty();
+          }, 1000);
+          bankroll = 100;
         }
       }, 1000);
     }
